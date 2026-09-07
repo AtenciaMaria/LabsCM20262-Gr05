@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mobile Computing Labs 2026-2</string>
+
+    <!-- Screens -->
+    <string name="title_personal_data">Personal information</string>
+    <string name="title_contact_data">Contact information</string>
+
+    <!-- PersonalData fields -->
+    <string name="lbl_names">First name</string>
+    <string name="lbl_surnames">Last name</string>
+    <string name="lbl_sex">Sex</string>
+    <string name="lbl_birthdate">Date of birth</string>
+    <string name="lbl_education">Education level</string>
+
+    <!-- ContactData fields -->
+    <string name="lbl_phone">Phone</string>
+    <string name="lbl_address">Address</string>
+    <string name="lbl_email">Email</string>
+    <string name="lbl_country">Country</string>
+    <string name="lbl_city">City</string>
+
+    <!-- Sex options -->
+    <string name="sex_male">Male</string>
+    <string name="sex_female">Female</string>
+    <string name="sex_other">Other</string>
+
+    <!-- Education options -->
+    <string name="edu_primary">Elementary school</string>
+    <string name="edu_secondary">High school</string>
+    <string name="edu_undergraduate">Undergraduate</string>
+    <string name="edu_postgraduate">Postgraduate</string>
+
+    <!-- Actions -->
+    <string name="action_next">Next</string>
+    <string name="action_submit">Finish</string>
+    <string name="action_start">Start</string>
+    <string name="action_close">Close</string>
+    <string name="action_ok">OK</string>
+    <string name="action_cancel">Cancel</string>
+
+    <!-- Placeholders / hints -->
+    <string name="hint_select">Select an option</string>
+    <string name="hint_search_country">Search your country</string>
+    <string name="hint_search_city">Search your city</string>
+    <string name="hint_select_date">Select the date</string>
+
+    <!-- Errors -->
+    <string name="error_required">Required field</string>
+    <string name="error_invalid_email">Invalid email</string>
+    <string name="error_invalid_phone">Invalid phone</string>
+    <string name="error_no_country">Select a country</string>
+
+    <!-- Confirmation -->
+    <string name="confirm_title">Data submitted</string>
+    <string name="confirm_message">Your information has been registered. Check Logcat to see the data.</string>
+    <string name="confirm_button">Got it</string>
+
+    <!-- Welcome -->
+    <string name="welcome_title">Welcome</string>
+    <string name="welcome_subtitle">Lab 1 — Graphical User Interfaces</string>
+    <string name="welcome_description">This app captures a user\'s personal and contact information using Jetpack Compose. It supports multiple languages and keeps the data across configuration changes.</string>
+
+    <!-- Date formatted -->
+    <string name="date_placeholder">Not selected</string>
+
+    <!-- Logcat -->
+    <string name="log_header_personal">Personal information:</string>
+    <string name="log_header_contact">Contact information:</string>
+    <string name="log_born_on">Born on %1$s</string>
+    <string name="log_phone">Phone: %1$s</string>
+    <string name="log_address">Address: %1$s</string>
+    <string name="log_email">Email: %1$s</string>
+    <string name="log_country">Country: %1$s</string>
+    <string name="log_city">City: %1$s</string>
+    <string name="log_tag">Lab1-UI</string>
+</resources>
