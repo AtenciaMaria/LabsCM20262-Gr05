@@ -2,6 +2,7 @@ package co.edu.udea.compumovil.gr05_20262.lab1.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+<<<<<<< HEAD
 // Paleta propia — familia azul-verdoso (teal), transmite confianza y orden,
 // apropiada para un formulario de datos personales. Se define un tono
 // principal y variantes claras/oscuras siguiendo las guías de Material 3:
@@ -47,3 +48,12 @@ val ErrorRed = Color(0xFFBA1A1A)
 val OnErrorRed = Color(0xFFFFFFFF)
 val ErrorContainerRed = Color(0xFFFFDAD6)
 val OnErrorContainerRed = Color(0xFF410002)
+=======
+val Purple80 = Color(0xFFD0BCFF)
+val PurpleGrey80 = Color(0xFFCCC2DC)
+val Pink80 = Color(0xFFEFB8C8)
+
+val Purple40 = Color(0xFF6650A4)
+val PurpleGrey40 = Color(0xFF625B71)
+val Pink40 = Color(0xFF7D5260)
+>>>>>>> 1fd30290d2eb581599e949452b543c53dac9ca26
