@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Labs CM 2026-2</string>
+
+    <!-- Pantallas -->
+    <string name="title_personal_data">Información personal</string>
+    <string name="title_contact_data">Información de contacto</string>
+
+    <!-- Campos PersonalData -->
+    <string name="lbl_names">Nombres</string>
+    <string name="lbl_surnames">Apellidos</string>
+    <string name="lbl_sex">Sexo</string>
+    <string name="lbl_birthdate">Fecha de nacimiento</string>
+    <string name="lbl_education">Grado de escolaridad</string>
+
+    <!-- Campos ContactData -->
+    <string name="lbl_phone">Teléfono</string>
+    <string name="lbl_address">Dirección</string>
+    <string name="lbl_email">Correo electrónico</string>
+    <string name="lbl_country">País</string>
+    <string name="lbl_city">Ciudad</string>
+
+    <!-- Opciones Sexo -->
+    <string name="sex_male">Hombre</string>
+    <string name="sex_female">Mujer</string>
+    <string name="sex_other">Otro</string>
+
+    <!-- Opciones Escolaridad -->
+    <string name="edu_primary">Primaria</string>
+    <string name="edu_secondary">Secundaria</string>
+    <string name="edu_undergraduate">Pregrado</string>
+    <string name="edu_postgraduate">Postgrado</string>
+
+    <!-- Acciones -->
+    <string name="action_next">Siguiente</string>
+    <string name="action_submit">Finalizar</string>
+    <string name="action_start">Comenzar</string>
+    <string name="action_close">Cerrar</string>
+    <string name="action_ok">Aceptar</string>
+    <string name="action_cancel">Cancelar</string>
+
+    <!-- Placeholders / hints -->
+    <string name="hint_select">Seleccione una opción</string>
+    <string name="hint_search_country">Busca tu país</string>
+    <string name="hint_search_city">Busca tu ciudad</string>
+    <string name="hint_select_date">Selecciona la fecha</string>
+
+    <!-- Errores -->
+    <string name="error_required">Campo obligatorio</string>
+    <string name="error_invalid_email">Correo inválido</string>
+    <string name="error_invalid_phone">Teléfono inválido</string>
+    <string name="error_no_country">Selecciona un país</string>
+
+    <!-- Progreso -->
+    <string name="step_indicator">Paso %1$d de %2$d</string>
+    <string name="section_basic_data">Datos básicos</string>
+    <string name="section_additional_data">Datos adicionales</string>
+    <string name="section_contact_data">Cómo contactarte</string>
+    <string name="section_location_data">Ubicación</string>
+
+    <!-- Confirmación -->
+    <string name="confirm_title">Datos enviados</string>
+    <string name="confirm_message">Tu información fue registrada. Revisa Logcat para ver los datos.</string>
+    <string name="confirm_button">Entendido</string>
+
+    <!-- Inicio -->
+    <string name="welcome_title">Bienvenido</string>
+    <string name="welcome_subtitle">Laboratorio 1 — Interfaces Gráficas de Usuario</string>
+    <string name="welcome_description">Esta aplicación captura los datos personales y de contacto de un usuario usando Jetpack Compose. Soporta múltiples idiomas y conserva la información durante cambios de configuración.</string>
+
+    <!-- Fecha formateada -->
+    <string name="date_placeholder">Sin seleccionar</string>
+
+    <!-- Logcat -->
+    <string name="log_header_personal">Información personal:</string>
+    <string name="log_header_contact">Información de contacto:</string>
+    <string name="log_born_on">Nació el %1$s</string>
+    <string name="log_phone">Teléfono: %1$s</string>
+    <string name="log_address">Dirección: %1$s</string>
+    <string name="log_email">Email: %1$s</string>
+    <string name="log_country">País: %1$s</string>
+    <string name="log_city">Ciudad: %1$s</string>
+    <string name="log_tag">Lab1-UI</string>
+</resources>
