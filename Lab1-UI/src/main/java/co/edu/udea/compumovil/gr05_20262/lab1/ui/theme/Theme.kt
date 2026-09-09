@@ -15,7 +15,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-<<<<<<< HEAD
 // Se declaran explícitamente los "roles" de color de Material 3 (no solo
 // primary/secondary/tertiary) para que cada componente -Card, TextField,
 // TopAppBar- tenga un color coherente con la paleta, en vez de heredar
@@ -66,32 +65,16 @@ private val DarkColorScheme = darkColorScheme(
     onError = OnErrorRed,
     errorContainer = ErrorContainerRed,
     onErrorContainer = OnErrorContainerRed
-=======
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
-
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
->>>>>>> 1fd30290d2eb581599e949452b543c53dac9ca26
 )
 
 @Composable
 fun LabsTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-<<<<<<< HEAD
     // Antes estaba en "true": eso hace que en Android 12+ la app tome
     // el color de fondo del usuario y tu paleta nunca se vea. Para un
     // lab de diseño conviene mostrar tu propia paleta por defecto; se
     // deja el parámetro por si el docente pide probar el color dinámico.
     dynamicColor: Boolean = false,
-=======
-    dynamicColor: Boolean = true,
->>>>>>> 1fd30290d2eb581599e949452b543c53dac9ca26
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -107,11 +90,7 @@ fun LabsTheme(
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = colorScheme.primary.toArgb()
-<<<<<<< HEAD
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
-=======
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
->>>>>>> 1fd30290d2eb581599e949452b543c53dac9ca26
         }
     }
 

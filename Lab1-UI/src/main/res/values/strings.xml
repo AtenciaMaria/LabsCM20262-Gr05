@@ -51,16 +51,12 @@
     <string name="error_invalid_phone">Teléfono inválido</string>
     <string name="error_no_country">Selecciona un país</string>
 
-<<<<<<< HEAD
     <!-- Progreso -->
     <string name="step_indicator">Paso %1$d de %2$d</string>
     <string name="section_basic_data">Datos básicos</string>
     <string name="section_additional_data">Datos adicionales</string>
     <string name="section_contact_data">Cómo contactarte</string>
     <string name="section_location_data">Ubicación</string>
-
-=======
->>>>>>> 1fd30290d2eb581599e949452b543c53dac9ca26
     <!-- Confirmación -->
     <string name="confirm_title">Datos enviados</string>
     <string name="confirm_message">Tu información fue registrada. Revisa Logcat para ver los datos.</string>

@@ -39,7 +39,7 @@ fun DatePickerField(
     val displayed = value?.let { PersonalData.formatDate(context, it) }
         ?: stringResource(id = R.string.date_placeholder)
 
-    Box(modifier = modifier.fillMaxWidth()) {
+    Box(modifier = modifier) {
         OutlinedTextField(
             value = displayed,
             onValueChange = {},
@@ -52,8 +52,7 @@ fun DatePickerField(
                 IconButton(onClick = { open = true }) {
                     Icon(imageVector = Icons.Filled.CalendarToday, contentDescription = null)
                 }
-            },
-            modifier = Modifier.fillMaxWidth()
+            }
         )
     }
 

@@ -20,32 +20,63 @@ import co.edu.udea.compumovil.gr05_20262.lab1.model.Sex
 fun SexSelector(
     selected: Sex?,
     onSelect: (Sex) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    horizontal: Boolean = false,
+    centered: Boolean = false
 ) {
-    Column(modifier = modifier.fillMaxWidth()) {
+    Column(
+        modifier = modifier.fillMaxWidth(),
+        horizontalAlignment = if (centered) Alignment.CenterHorizontally else Alignment.Start
+    ) {
         Text(
             text = stringResource(id = co.edu.udea.compumovil.gr05_20262.lab1.R.string.lbl_sex),
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(bottom = 4.dp)
         )
-        Sex.entries.forEach { sex ->
+        if (horizontal) {
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .selectable(
-                        selected = (sex == selected),
-                        onClick = { onSelect(sex) },
-                        role = Role.RadioButton
-                    )
-                    .padding(vertical = 4.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                RadioButton(selected = (sex == selected), onClick = null)
-                Text(
-                    text = stringResource(id = sex.labelRes),
-                    modifier = Modifier.padding(start = 8.dp),
-                    style = MaterialTheme.typography.bodyLarge
-                )
+                Sex.entries.forEach { sex ->
+                    Row(
+                        modifier = Modifier
+                            .selectable(
+                                selected = (sex == selected),
+                                onClick = { onSelect(sex) },
+                                role = Role.RadioButton
+                            )
+                            .padding(horizontal = 8.dp, vertical = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        RadioButton(selected = (sex == selected), onClick = null)
+                        Text(
+                            text = stringResource(id = sex.labelRes),
+                            modifier = Modifier.padding(start = 4.dp),
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                    }
+                }
+            }
+        } else {
+            Sex.entries.forEach { sex ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .selectable(
+                            selected = (sex == selected),
+                            onClick = { onSelect(sex) },
+                            role = Role.RadioButton
+                        )
+                        .padding(vertical = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    RadioButton(selected = (sex == selected), onClick = null)
+                    Text(
+                        text = stringResource(id = sex.labelRes),
+                        modifier = Modifier.padding(start = 8.dp),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
             }
         }
     }

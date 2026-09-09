@@ -32,7 +32,7 @@ fun EducationDropdown(
     ExposedDropdownMenuBox(
         expanded = expanded,
         onExpandedChange = { expanded = !expanded },
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier
     ) {
         OutlinedTextField(
             value = selected?.let { stringResource(it.labelRes) } ?: "",
@@ -43,9 +43,7 @@ fun EducationDropdown(
             trailingIcon = {
                 Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = null)
             },
-            modifier = Modifier
-                .menuAnchor()
-                .fillMaxWidth()
+            modifier = Modifier.menuAnchor()
         )
 
         ExposedDropdownMenu(

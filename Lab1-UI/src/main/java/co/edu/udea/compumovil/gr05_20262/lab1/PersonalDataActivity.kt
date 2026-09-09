@@ -1,6 +1,7 @@
 package co.edu.udea.compumovil.gr05_20262.lab1
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -8,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,19 +17,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
-<<<<<<< HEAD
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-=======
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
->>>>>>> 1fd30290d2eb581599e949452b543c53dac9ca26
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -40,7 +38,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -55,14 +55,10 @@ import co.edu.udea.compumovil.gr05_20262.lab1.ui.components.DatePickerField
 import co.edu.udea.compumovil.gr05_20262.lab1.ui.components.EducationDropdown
 import co.edu.udea.compumovil.gr05_20262.lab1.ui.components.SectionTitle
 import co.edu.udea.compumovil.gr05_20262.lab1.ui.components.SexSelector
-<<<<<<< HEAD
 import co.edu.udea.compumovil.gr05_20262.lab1.ui.components.StepProgress
 import co.edu.udea.compumovil.gr05_20262.lab1.ui.theme.LabsTheme
 import co.edu.udea.compumovil.gr05_20262.lab1.ui.theme.Shapes
 import co.edu.udea.compumovil.gr05_20262.lab1.ui.theme.Spacing
-=======
-import co.edu.udea.compumovil.gr05_20262.lab1.ui.theme.LabsTheme
->>>>>>> 1fd30290d2eb581599e949452b543c53dac9ca26
 
 class PersonalDataActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,7 +98,6 @@ private fun PersonalTopBar() {
     )
 }
 
-<<<<<<< HEAD
 /** Título pequeño reutilizado como encabezado dentro de cada Card. */
 @Composable
 private fun CardSectionLabel(text: String) {
@@ -114,8 +109,6 @@ private fun CardSectionLabel(text: String) {
     )
 }
 
-=======
->>>>>>> 1fd30290d2eb581599e949452b543c53dac9ca26
 @Composable
 fun PersonalDataScreen(
     modifier: Modifier = Modifier,
@@ -132,6 +125,8 @@ fun PersonalDataScreen(
     var birthDateError by rememberSaveable { mutableStateOf(false) }
 
     val context = LocalContext.current
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
     val scrollState = rememberScrollState()
     Column(
@@ -140,16 +135,11 @@ fun PersonalDataScreen(
             .verticalScroll(scrollState)
             .imePadding()
             .navigationBarsPadding()
-<<<<<<< HEAD
             .padding(horizontal = Spacing.md, vertical = Spacing.md),
-=======
-            .padding(horizontal = 16.dp, vertical = 16.dp),
->>>>>>> 1fd30290d2eb581599e949452b543c53dac9ca26
         verticalArrangement = Arrangement.Top
     ) {
         SectionTitle(text = stringResource(id = R.string.title_personal_data))
 
-<<<<<<< HEAD
         StepProgress(
             currentStep = 1,
             totalSteps = 2,
@@ -166,55 +156,105 @@ fun PersonalDataScreen(
             Column(modifier = Modifier.padding(Spacing.md)) {
                 CardSectionLabel(stringResource(id = R.string.section_basic_data))
 
-                OutlinedTextField(
-                    value = names,
-                    onValueChange = {
-                        names = it
-                        if (it.isNotBlank()) namesError = false
-                    },
-                    label = { Text(text = stringResource(id = R.string.lbl_names)) },
-                    singleLine = true,
-                    isError = namesError,
-                    supportingText = if (namesError) {
-                        { Text(text = stringResource(id = R.string.error_required)) }
-                    } else null,
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Text,
-                        capitalization = KeyboardCapitalization.Words,
-                        autoCorrectEnabled = false,
-                        imeAction = ImeAction.Next
-                    ),
-                    modifier = Modifier.fillMaxWidth()
-                )
+                if (isLandscape) {
+                    Row(modifier = Modifier.fillMaxWidth()) {
+                        OutlinedTextField(
+                            value = names,
+                            onValueChange = {
+                                names = it
+                                if (it.isNotBlank()) namesError = false
+                            },
+                            label = { Text(text = stringResource(id = R.string.lbl_names)) },
+                            singleLine = true,
+                            isError = namesError,
+                            supportingText = if (namesError) {
+                                { Text(text = stringResource(id = R.string.error_required)) }
+                            } else null,
+                            keyboardOptions = KeyboardOptions(
+                                keyboardType = KeyboardType.Text,
+                                capitalization = KeyboardCapitalization.Words,
+                                autoCorrectEnabled = false,
+                                imeAction = ImeAction.Next
+                            ),
+                            modifier = Modifier.weight(1f)
+                        )
 
-                Spacer(modifier = Modifier.height(Spacing.sm))
+                        Spacer(modifier = Modifier.width(Spacing.sm))
 
-                OutlinedTextField(
-                    value = surnames,
-                    onValueChange = {
-                        surnames = it
-                        if (it.isNotBlank()) surnamesError = false
-                    },
-                    label = { Text(text = stringResource(id = R.string.lbl_surnames)) },
-                    singleLine = true,
-                    isError = surnamesError,
-                    supportingText = if (surnamesError) {
-                        { Text(text = stringResource(id = R.string.error_required)) }
-                    } else null,
-                    keyboardOptions = KeyboardOptions(
-                        keyboardType = KeyboardType.Text,
-                        capitalization = KeyboardCapitalization.Words,
-                        autoCorrectEnabled = false,
-                        imeAction = ImeAction.Next
-                    ),
-                    modifier = Modifier.fillMaxWidth()
-                )
+                        OutlinedTextField(
+                            value = surnames,
+                            onValueChange = {
+                                surnames = it
+                                if (it.isNotBlank()) surnamesError = false
+                            },
+                            label = { Text(text = stringResource(id = R.string.lbl_surnames)) },
+                            singleLine = true,
+                            isError = surnamesError,
+                            supportingText = if (surnamesError) {
+                                { Text(text = stringResource(id = R.string.error_required)) }
+                            } else null,
+                            keyboardOptions = KeyboardOptions(
+                                keyboardType = KeyboardType.Text,
+                                capitalization = KeyboardCapitalization.Words,
+                                autoCorrectEnabled = false,
+                                imeAction = ImeAction.Next
+                            ),
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                } else {
+                    OutlinedTextField(
+                        value = names,
+                        onValueChange = {
+                            names = it
+                            if (it.isNotBlank()) namesError = false
+                        },
+                        label = { Text(text = stringResource(id = R.string.lbl_names)) },
+                        singleLine = true,
+                        isError = namesError,
+                        supportingText = if (namesError) {
+                            { Text(text = stringResource(id = R.string.error_required)) }
+                        } else null,
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Text,
+                            capitalization = KeyboardCapitalization.Words,
+                            autoCorrectEnabled = false,
+                            imeAction = ImeAction.Next
+                        ),
+                        modifier = Modifier.fillMaxWidth()
+                    )
+
+                    Spacer(modifier = Modifier.height(Spacing.sm))
+
+                    OutlinedTextField(
+                        value = surnames,
+                        onValueChange = {
+                            surnames = it
+                            if (it.isNotBlank()) surnamesError = false
+                        },
+                        label = { Text(text = stringResource(id = R.string.lbl_surnames)) },
+                        singleLine = true,
+                        isError = surnamesError,
+                        supportingText = if (surnamesError) {
+                            { Text(text = stringResource(id = R.string.error_required)) }
+                        } else null,
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Text,
+                            capitalization = KeyboardCapitalization.Words,
+                            autoCorrectEnabled = false,
+                            imeAction = ImeAction.Next
+                        ),
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(Spacing.md))
 
                 SexSelector(
                     selected = Sex.fromKey(sexKey),
-                    onSelect = { sexKey = it.name }
+                    onSelect = { sexKey = it.name },
+                    horizontal = true,
+                    centered = isLandscape
                 )
             }
         }
@@ -228,7 +268,10 @@ fun PersonalDataScreen(
             elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
-            Column(modifier = Modifier.padding(Spacing.md)) {
+            Column(
+                modifier = Modifier.padding(Spacing.md),
+                horizontalAlignment = if (isLandscape) Alignment.CenterHorizontally else Alignment.Start
+            ) {
                 CardSectionLabel(stringResource(id = R.string.section_additional_data))
 
                 DatePickerField(
@@ -238,118 +281,80 @@ fun PersonalDataScreen(
                         if (it != null) birthDateError = false
                     },
                     isError = birthDateError,
-                    errorMessage = if (birthDateError) stringResource(id = R.string.error_required) else null
+                    errorMessage = if (birthDateError) stringResource(id = R.string.error_required) else null,
+                    modifier = if (isLandscape) Modifier.width(280.dp) else Modifier.fillMaxWidth()
                 )
 
                 Spacer(modifier = Modifier.height(Spacing.sm))
 
-                EducationDropdown(
-                    selected = EducationLevel.fromKey(educationKey),
-                    onSelect = { educationKey = it.name }
-                )
+                if (isLandscape) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        EducationDropdown(
+                            selected = EducationLevel.fromKey(educationKey),
+                            onSelect = { educationKey = it.name },
+                            modifier = Modifier.width(280.dp)
+                        )
+
+                        Spacer(modifier = Modifier.weight(1f))
+
+                        Button(
+                            onClick = {
+                                namesError = names.isBlank()
+                                surnamesError = surnames.isBlank()
+                                birthDateError = birthDateMillis == null
+                                if (namesError || surnamesError || birthDateError) return@Button
+
+                                val data = PersonalData(
+                                    names = names,
+                                    surnames = surnames,
+                                    sex = Sex.fromKey(sexKey),
+                                    birthDateMillis = birthDateMillis,
+                                    education = EducationLevel.fromKey(educationKey)
+                                )
+                                onNext(data)
+                            }
+                        ) {
+                            Text(text = stringResource(id = R.string.action_next))
+                        }
+                    }
+                } else {
+                    EducationDropdown(
+                        selected = EducationLevel.fromKey(educationKey),
+                        onSelect = { educationKey = it.name },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
             }
         }
 
-        Spacer(modifier = Modifier.height(Spacing.lg))
-=======
-        OutlinedTextField(
-            value = names,
-            onValueChange = {
-                names = it
-                if (it.isNotBlank()) namesError = false
-            },
-            label = { Text(text = stringResource(id = R.string.lbl_names)) },
-            singleLine = true,
-            isError = namesError,
-            supportingText = if (namesError) {
-                { Text(text = stringResource(id = R.string.error_required)) }
-            } else null,
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Words,
-                autoCorrectEnabled = false,
-                imeAction = ImeAction.Next
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
+        if (!isLandscape) {
+            Spacer(modifier = Modifier.height(Spacing.lg))
 
-        Spacer(modifier = Modifier.height(8.dp))
+            Button(
+                onClick = {
+                    namesError = names.isBlank()
+                    surnamesError = surnames.isBlank()
+                    birthDateError = birthDateMillis == null
+                    if (namesError || surnamesError || birthDateError) return@Button
 
-        OutlinedTextField(
-            value = surnames,
-            onValueChange = {
-                surnames = it
-                if (it.isNotBlank()) surnamesError = false
-            },
-            label = { Text(text = stringResource(id = R.string.lbl_surnames)) },
-            singleLine = true,
-            isError = surnamesError,
-            supportingText = if (surnamesError) {
-                { Text(text = stringResource(id = R.string.error_required)) }
-            } else null,
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Text,
-                capitalization = KeyboardCapitalization.Words,
-                autoCorrectEnabled = false,
-                imeAction = ImeAction.Next
-            ),
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        SexSelector(
-            selected = Sex.fromKey(sexKey),
-            onSelect = { sexKey = it.name }
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        DatePickerField(
-            value = birthDateMillis,
-            onValueChange = {
-                birthDateMillis = it
-                if (it != null) birthDateError = false
-            },
-            isError = birthDateError,
-            errorMessage = if (birthDateError) stringResource(id = R.string.error_required) else null
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        EducationDropdown(
-            selected = EducationLevel.fromKey(educationKey),
-            onSelect = { educationKey = it.name }
-        )
-
-        Spacer(modifier = Modifier.height(24.dp))
->>>>>>> 1fd30290d2eb581599e949452b543c53dac9ca26
-
-        Button(
-            onClick = {
-                namesError = names.isBlank()
-                surnamesError = surnames.isBlank()
-                birthDateError = birthDateMillis == null
-                if (namesError || surnamesError || birthDateError) return@Button
-
-                val data = PersonalData(
-                    names = names,
-                    surnames = surnames,
-                    sex = Sex.fromKey(sexKey),
-                    birthDateMillis = birthDateMillis,
-                    education = EducationLevel.fromKey(educationKey)
-                )
-                onNext(data)
-            },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(text = stringResource(id = R.string.action_next))
+                    val data = PersonalData(
+                        names = names,
+                        surnames = surnames,
+                        sex = Sex.fromKey(sexKey),
+                        birthDateMillis = birthDateMillis,
+                        education = EducationLevel.fromKey(educationKey)
+                    )
+                    onNext(data)
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(text = stringResource(id = R.string.action_next))
+            }
         }
 
-<<<<<<< HEAD
         Spacer(modifier = Modifier.height(Spacing.md))
-=======
-        Spacer(modifier = Modifier.height(16.dp))
->>>>>>> 1fd30290d2eb581599e949452b543c53dac9ca26
     }
 }
