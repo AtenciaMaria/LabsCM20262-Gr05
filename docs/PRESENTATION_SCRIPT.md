@@ -3,15 +3,23 @@
 > Versión del guion repartida entre **3 presentadores**, cada uno
 > habla **una sola vez** (un solo bloque de slides).
 >
+> **Contexto:** este es el **Laboratorio 1** del curso de Computación
+> Móvil. La guía del laboratorio pedía construir una app Android
+> que capture datos personales y de contacto, valide los obligatorios,
+> soporte 2 idiomas, persista en rotación y se entregue firmada como
+> APK. Lo que se muestra en estas slides es **nuestra implementación
+> del Lab1**, con un sistema de diseño propio (paleta, tipografía,
+> espaciado y componentes) que va más allá del mínimo pedido.
+>
 > **Duración total:** ~8‑10 min exposición + 3‑5 min Q&A.
 >
 > **Reparto:**
 >
 > | Persona  | Bloque                          | Slides    | Tema                                |
 > |----------|---------------------------------|-----------|-------------------------------------|
-> | Persona 1| A — Contexto                    | 1, 2, 3   | Qué es la app y cómo se navega      |
-> | Persona 2| B — Sistema de diseño           | 4, 5, 6   | Antes/después, color, tipografía    |
-> | Persona 3| C — Demo + componentes + cierre | 7, 8      | Demo en vivo, componentes, cierre   |
+> | Persona 1| A — Contexto                    | 1, 2, 3   | Qué es Lab1 y cómo se navega        |
+> | Persona 2| B — Sistema de diseño           | 4, 5, 6   | Decisiones de diseño y por qué      |
+> | Persona 3| C — Demo + componentes + cierre | 7, 8      | Demo en vivo, cierre                |
 
 ---
 
@@ -34,9 +42,10 @@
 ## 🎤 Persona 1 — Bloque A: Contexto (Slides 1‑3)
 
 > "Buenas, somos el grupo 05 de Computación Móvil. Hoy les
-> presentamos el rediseño visual del Lab1‑UI: la misma app del
-> primer laboratorio, pero con un sistema de diseño propio,
-> coherente de punta a punta."
+> presentamos el **Laboratorio 1**: construimos una app Android
+> que captura datos personales y de contacto, valida los campos
+> obligatorios, soporta dos idiomas y guarda el estado al rotar la
+> pantalla. La entrega del laboratorio es esta APK firmada."
 
 **Mientras habla:** mostrar slide 1, click a slide 2.
 
@@ -45,9 +54,10 @@
 **En pantalla:** *"UI · Lab1‑UI · Rediseño visual de la interfaz
 gráfica · Computación Móvil · Grupo Gr05 · Jetpack Compose"*
 
-> "Esta es nuestra portada. Hoy les vamos a mostrar cómo pasamos
-> de la app genérica que entrega Android Studio a una con identidad
-> propia, **sin tocar la funcionalidad** que pide el laboratorio."
+> "Esta es nuestra entrega del Lab1. La app está hecha 100% en
+> Jetpack Compose y, además de cumplir lo que pide la guía, le
+> pusimos un sistema de diseño propio para que se vea consistente
+> y profesional de punta a punta."
 
 **Tip:** no leer la slide completa.
 
@@ -57,16 +67,16 @@ gráfica · Computación Móvil · Grupo Gr05 · Jetpack Compose"*
 
 **Click a slide 2.**
 
-> "Primero, el contexto rápido. Lab1‑UI es la app del primer
-> laboratorio del curso: pide datos personales y de contacto en un
-> formulario de dos pasos, valida los obligatorios y registra los
-> datos en Logcat. Está hecha **100% en Jetpack Compose** —
-> declarativa, no con XMLs —, soporta español e inglés, y guarda
-> lo que el usuario escribió cuando rota la pantalla o cambia el
-> idioma.
+> "El Laboratorio 1 del curso pide construir una app que pida
+> datos personales y de contacto en un formulario de dos pasos,
+> valide los obligatorios y registre los datos en Logcat con un
+> formato específico.
 >
-> El reto fue mantener **toda** esa funcionalidad y encima darle
-> una identidad visual."
+> Nuestra implementación está hecha **100% en Jetpack Compose** —
+> declarativa, sin XMLs de layout —, soporta **español e inglés**,
+> y guarda lo que el usuario escribió cuando rota la pantalla o
+> cambia el idioma. Eso último lo conseguimos con `rememberSaveable`,
+> que serializa el estado en el `Bundle` de Android."
 
 **Duración:** ~45 s.
 
@@ -82,11 +92,12 @@ gráfica · Computación Móvil · Grupo Gr05 · Jetpack Compose"*
 > 'Paso X de 2' para que el usuario sepa siempre dónde está
 > parado.
 >
-> La pantalla 1 es solo de entrada; las pantallas 2 y 3 son las que
-> tienen formularios."
+> Cuando el usuario pulsa 'Siguiente' o 'Finalizar', validamos
+> los obligatorios y, si todo está bien, escribimos en Logcat el
+> bloque con el formato exacto que pide el enunciado del Lab."
 
 **Transición:** "Ahora [nombre de la Persona 2] les va a contar
-qué cambió respecto al diseño original."
+cómo decidimos darle una identidad visual propia."
 
 **Duración total Persona 1:** ~2 min.
 
@@ -100,17 +111,19 @@ qué cambió respecto al diseño original."
 
 **Click a slide 4.**
 
-> "Esta es la slide central del trabajo. A la izquierda, la app
-> tal como sale del *New Project* de Android Studio: morado
-> genérico, campos uno tras otro sin agrupación, sin indicio de
-> progreso y una mezcla rara de tipografías porque solo tres
-> estilos estaban definidos.
+> "Cuando uno crea un *New Project* en Android Studio con Compose,
+> lo que sale es la columna de la izquierda: el **morado genérico**
+> del tema base, campos uno tras otro sin agrupación, sin indicio
+> de progreso entre pantallas y una mezcla rara de tipografías
+> porque solo tres estilos están definidos y el resto cae al
+> default.
 >
-> A la derecha, lo que hicimos: una **paleta propia** con tres
-> roles de color —teal como primario, ámbar como secundario,
-> índigo como terciario—, los campos **agrupados en tarjetas** por
-> tema, un **indicador 'Paso 1 de 2'** entre pantallas, y una
-> **escala tipográfica y de espaciado consistente**."
+> Lo que decidimos hacer para Lab1 está en la columna derecha: una
+> **paleta propia** con tres roles de color —teal como primario,
+> ámbar como secundario, índigo como terciario—, los campos
+> **agrupados en tarjetas** por tema, un **indicador 'Paso 1 de 2'**
+> entre pantallas, y una **escala tipográfica y de espaciado
+> consistente** en todo el proyecto."
 
 **Apunte:** si el docente pregunta *¿por qué teal?*: *"porque
 transmite confianza y orden, apropiado para un formulario de
@@ -154,8 +167,7 @@ cualquier app creada sin diseño."*
 > Y centralizamos el espaciado en un único `object Spacing` con
 > cinco valores: 4, 8, 16, 24 y 32 dp. **Nunca** escribimos
 > `16.dp` suelto en un composable: siempre viene de `Spacing.md`.
-> Eso hace que ajustar el 'aire' de la app sea tocar un solo
-> lugar."
+> Eso hace que ajustar el 'aire' de la app sea tocar un solo lugar."
 
 **Apunte:** *"Un detalle: el ícono y los textos del botón 'Comenzar'
 usan el mismo `Spacing.lg` (24 dp) que el padding entre las Cards,
@@ -195,7 +207,8 @@ Logcat visible.** Mientras habla, hacer click a slide 7.
 
 ### 🎬 Demo en vivo (~1 min 30 s)
 
-> "Déjenme mostrarles cómo se siente todo esto en la pantalla."
+> "Déjenme mostrarles cómo se siente todo esto en la pantalla y,
+> de paso, los requisitos del Lab en acción."
 
 **Pasos a ejecutar (marcados como coreografía, no se narran todos
 los detalles al público):**
@@ -210,26 +223,27 @@ los detalles al público):**
 
 3. **Escribir "Pepito" en nombres, dejar apellidos en blanco, tap
    'Siguiente'.** *Decir:* "validación en línea: campo vacío se
-   marca en rojo."
+   marca en rojo, que es lo que pide el Lab."
 
 4. **Rellenar apellidos, fecha con el DatePicker, sexo y
    escolaridad. Tap 'Siguiente'.** *Decir:* "el DatePickerDialog
    se abre con el icono de calendario."
 
 5. **Pantalla 3.** *Decir:* "Paso 2 de 2, autocompletes filtrando
-   en vivo."
+   en vivo —el Lab pedía autocomplete con los países de
+   Latinoamérica y ciudades de Colombia."
 
 6. **Email mal, tap 'Finalizar'.** *Decir:* "el matcher de
    `Patterns.EMAIL_ADDRESS` rechaza el formato."
 
 7. **Email bien, país, ciudad, tap 'Finalizar'.** *Decir:* "se
    muestra el `AlertDialog` y, lo más importante, los datos
-   quedaron en Logcat. [Abrir Logcat] Miren, acá está el bloque
-   'Información personal' con el formato exacto del enunciado."
+   quedaron en Logcat con el formato exacto del enunciado. [Abrir
+   Logcat] Miren, acá está el bloque 'Información personal'."
 
-8. **Rotar a landscape.** *Decir:* "el estado se preserva y el
-   layout se reorganiza: nombres y apellidos lado a lado, botón
-   reubicado."
+8. **Rotar a landscape.** *Decir:* "el estado se preserva —que
+   es otro requisito del Lab— y el layout se reorganiza: nombres
+   y apellidos lado a lado, botón reubicado."
 
 9. **Cambiar idioma del sistema a inglés.** *Decir:* "todos los
    textos cambian al instante y el estado de los campos se
@@ -241,13 +255,14 @@ los detalles al público):**
 
 **Click a slide 8.**
 
-> "Para cerrar: la funcionalidad **no cambió** respecto al
-> laboratorio original —los mismos campos, la misma validación, el
-> mismo log en Logcat—. Lo que hicimos fue ponerle una
-> **identidad**: una paleta con roles claros, una escala
-> tipográfica consistente, un espaciado centralizado y unos
-> componentes reutilizables que cualquier pantalla nueva podría
-> adoptar sin reinventar nada.
+> "Para cerrar: lo que pidió el Laboratorio 1 está **todo**
+> cubierto —el formulario con los campos obligatorios, la
+> validación, el log en Logcat con el formato exacto, el
+> multilenguaje, la persistencia en rotación, el ícono
+> personalizado y el APK firmado—. Lo que añadimos por nuestra
+> cuenta fue una **identidad visual**: una paleta con roles
+> claros, una escala tipográfica consistente, un espaciado
+> centralizado y unos componentes reutilizables.
 >
 > Eso es lo que significa 'un sistema de diseño': no pintar tres
 > cosas bonitas, sino que cada decisión se pueda cambiar en
@@ -276,11 +291,11 @@ Cada quien contesta lo que sabe. Reparto sugerido para no pisar:
 ### Preguntas probables y respuestas (cheat sheet)
 
 #### 1. *"¿Por qué no usaron ViewModel?"*
-> "Por alcance. El laboratorio no lo pedía y el formulario tiene
-> estado puramente local. Usar `rememberSaveable` ya cumple el
-> requisito de persistir en rotación, y nos ahorra una capa de
-> indirección. Si la app creciera —por ejemplo, enviando datos a un
-> backend— ahí sí migraríamos a ViewModel."
+> "Por alcance. El Lab 1 no lo pedía y el formulario tiene estado
+> puramente local. Usar `rememberSaveable` ya cumple el requisito de
+> persistir en rotación, y nos ahorra una capa de indirección. Si la
+> app creciera —por ejemplo, enviando datos a un backend— ahí sí
+> migraríamos a ViewModel."
 
 #### 2. *"¿Por qué teal y no otro color?"*
 > "Porque transmite confianza y orden, apropiado para un formulario
@@ -307,7 +322,7 @@ Cada quien contesta lo que sabe. Reparto sugerido para no pisar:
 > contenido hacia arriba cuando aparece el teclado. Combinado con
 > `verticalScroll(...)`, el usuario siempre puede scrollear para
 > llegar al campo que está editando. Es uno de los requisitos del
-> enunciado."
+> Lab."
 
 #### 6. *"¿Cómo cambia el layout en landscape?"*
 > "Con `LocalConfiguration.current.orientation` detectamos si está
@@ -319,10 +334,10 @@ Cada quien contesta lo que sabe. Reparto sugerido para no pisar:
 
 #### 7. *"¿Y los Logs?"*
 > "Cada data class tiene su propio `toLog(context)` que arma el
-> bloque exactamente con el formato del enunciado. La `Activity`
-> hace `Log.d(R.string.log_tag, data.toLog(this))` al pulsar
-> Siguiente / Finalizar. El tag es localizable para que también
-> cambie con el idioma."
+> bloque exactamente con el formato del enunciado del Lab. La
+> `Activity` hace `Log.d(R.string.log_tag, data.toLog(this))` al
+> pulsar Siguiente / Finalizar. El tag es localizable para que
+> también cambie con el idioma."
 
 #### 8. *"¿Cómo agregaron el ícono personalizado?"*
 > "Reemplazamos los `mipmap-*` por defecto con un ícono propio y
@@ -330,7 +345,7 @@ Cada quien contesta lo que sabe. Reparto sugerido para no pisar:
 > en el `AndroidManifest`."
 
 #### 9. *"¿Por qué no Navigation Compose?"*
-> "El enunciado pedía Activities nombradas (`PersonalDataActivity`,
+> "El Lab pedía Activities nombradas (`PersonalDataActivity`,
 > `ContactDataActivity`) y `setContent { … }`. Usar Navigation
 > Compose habría significado alejarse del patrón pedido. Con tres
 > pantallas y un flujo lineal, `Intent` explícito es más simple y
@@ -351,7 +366,8 @@ Cada quien contesta lo que sabe. Reparto sugerido para no pisar:
 > "Si quedó alguna duda, toda la documentación está en `docs/`:
 > arquitectura, diagramas Mermaid, descripción de cada componente
 > y de cada modelo. Y por supuesto el código fuente, que muestra
-> cómo se tomó cada decisión."
+> cómo se tomó cada decisión. El repositorio está en
+> github.com/AtenciaMaria/LabsCM20262-Gr05."
 
 ---
 
